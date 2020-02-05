@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Liste des personnes";
+}
+@using Isen.Dotnet.Library.Model;
+@model IEnumerable<Person>;
+<div>
+    <h1>Liste <small>des personnes</small></h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Date de naissance</th>
+                <th scope="col">Numéro de téléphone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Service</th>
+                <th scope="col">Role</th>
+                <th scope="col">Action...</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var person in Model)
+            {
+            <tr>
+                <td scope="row">@person.Id</td>
+                <td>@person.LastName</td>
+                <td>@person.FirstName</td>
+                <td>@person.DateOfBirth.Value.ToShortDateString() (@person.Age ans)</td>
+                <td>@person.PhoneNumber</td>
+                <td>@person.Email</td>
+                <td>@person.ServiceMembership.Name</td>
+                <td>
+                    <ul>
+                        @foreach(var rp in @person.RolesPerson)
+                        {
+                            <li>@rp.Role.Name</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary"
+                        asp-controller="Person"
+                        asp-action="Edit"
+                        asp-route-id="@person.Id">Modifier</a>
+                    <a class="btn btn-outline-danger"
+                        asp-controller="Person"
+                        asp-action="Delete"
+                        asp-route-id="@person.Id">Supprimer</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

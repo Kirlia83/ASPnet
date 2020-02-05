@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Edition d'un service";
+}
+@using Isen.Dotnet.Library.Model;
+@using Isen.Dotnet.Library.Context;
+@model Service;
+@inject ApplicationDbContext _context;
+
+<h2>Création ou édition <small>d'un service</small></h2>
+<form class="form-group" asp-action="Edit">
+
+    <h3>Identité <small>du service</small></h3>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Name">Nom du service</label>
+                <input
+                    id="Name"
+                    type="text"
+                    class="form-control"
+                    placeholder="Nom"
+                    asp-for="Name"
+                    value="@Model?.Name" />
+            </div>
+        </div>
+    </div>
+</form>        

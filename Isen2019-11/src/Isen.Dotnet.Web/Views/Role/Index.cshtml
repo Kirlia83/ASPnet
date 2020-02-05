@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Liste des roles";
+}
+@using Isen.Dotnet.Library.Model;
+@model IEnumerable<Role>;
+<div>
+    <h1>Liste <small>des roles</small></h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Personnes</th>
+                <th scope="col">Actions...</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var role in Model)
+            {
+            <tr>
+                <td scope="row">@role.Id</td>
+                <td>@role.Name</td>
+                <td>
+                    <ul>
+                    @foreach(var p in @role.PersonsRole)
+                    {
+                        <li>@p.Person.FirstName</li>
+                    }
+                    </ul>
+                </td>
+
+                <td>
+                    <a class="btn btn-outline-primary"
+                        asp-controller="Role"
+                        asp-action="Edit"
+                        asp-route-id="@role.Id">Modifier</a>
+                    <a class="btn btn-outline-danger"
+                        asp-controller="Role"
+                        asp-action="Delete"
+                        asp-route-id="@role.Id">Supprimer</a>
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
