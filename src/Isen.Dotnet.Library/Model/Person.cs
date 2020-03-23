@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Isen.Dotnet.Library.Model
 {
-    public class Person : BaseEntity
+    public class Person : BaseEntity<Person>
     {        
         public string FirstName {get;set;}
         public string LastName {get;set;}

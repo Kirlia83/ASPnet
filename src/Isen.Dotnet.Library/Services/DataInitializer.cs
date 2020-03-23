@@ -152,10 +152,6 @@ namespace Isen.Dotnet.Library.Services
             {
                 persons.Add(RandomPerson);
             }
-            for(var j = 0; j < persons.Count; j++)
-            {
-                persons[j].Id= j+1689;
-            }
             return persons;
         }
 
